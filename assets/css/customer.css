@@ -1,0 +1,62 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-page {
+    background-image: url('/assets/images/background/payments_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.text-light {
+    --bs-text-opacity: 1;
+    color: rgb(255 255 255) !important;
+}
+
+h1, h4 {
+    color: #ffffff;
+    -webkit-text-stroke: 1px rgb(15, 15, 15);
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card p {
+    font-size: 1.2rem;
+}
+
+button {
+    font-size: 1.1rem;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffc107;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer h6 {
+    margin: 0;
+    font-size: 1rem;
+}
