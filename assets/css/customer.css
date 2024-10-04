@@ -7,12 +7,19 @@ body {
 }
 
 .customer-page {
-    background-image: url('/assets/images/background/payments_background.jpg');
+    background-image: url('/assets/images/background/login_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
+}
+
+.header-text{
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.308);
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-text-stroke: 1px rgb(15, 15, 15);
 }
 
 main {

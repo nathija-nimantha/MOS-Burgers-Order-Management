@@ -117,10 +117,6 @@ document.getElementById('addCardDetailsBtn').addEventListener('click', () => {
     }
 });
 
-document.getElementById('signOutBtn').addEventListener('click', () => {
-    loggedInCustomer = null;
-    location.reload();
-});
 
 const orders = JSON.parse(localStorage.getItem('orders')) || [];
 const reviews = JSON.parse(localStorage.getItem('reviews')) || [];

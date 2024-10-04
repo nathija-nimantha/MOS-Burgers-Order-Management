@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Payment Successful!');
     });
 
-    // Card Details Verification
     const cardNumberInput = document.getElementById('cardNumber');
     const cardIcon = document.getElementById('card-icon');
 
@@ -93,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Month and Year Verification
     const expiryDateInput = document.getElementById('expiryDate');
     expiryDateInput.addEventListener('input', (e) => {
         let value = e.target.value.replace(/\D/g, '');

@@ -20,7 +20,6 @@ a {
     color: #ffc107 !important;
 }
 
-/* Hero Section */
 .hero-section {
     background: url('/assets/images/background/background.jpg') no-repeat center center/cover;
     height: 100vh;
@@ -55,18 +54,51 @@ a {
 }
 
 .features {
-    color: #fff;
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
 }
 
 .features h3 {
-    color: #fff;
     font-size: 1.8rem;
-    margin-top: 1.5rem;
+    color: #ffc107;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .features p {
-    color: #adb5bd;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    color: #dee2e6;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.features .col-lg-4 {
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.features .col-lg-4:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.features .container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .features h3 {
+        font-size: 1.5rem;
+    }
+    
+    .features p {
+        font-size: 1rem;
+    }
 }
 
 footer {
@@ -165,6 +197,13 @@ footer p {
     }
 }
 
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
 .cart-icon {
     position: fixed;
     bottom: 20px;
@@ -201,21 +240,24 @@ footer p {
     bottom: 100px;
     right: 20px;
     width: 400px;
-    background-color: rgba(255, 255, 255, 0.685);
+    background-color: #212529;
     border: 1px solid #000000;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    -webkit-text-fill-color: #ccc;
 }
 
 .cart-header {
-    padding: 10px;
-    background-color: #007bff;
+    padding: 15px;
+    background-color: #474747;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    -webkit-text-fill-color: #ffffff;
+    border-radius: 15px;
 }
 
 .cart-content {
@@ -225,8 +267,37 @@ footer p {
 }
 
 .cart-footer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #474747;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.cart-summary strong {
+    min-width: 120px;
+    text-align: left;
+}
+
+.cart-summary span {
+    text-align: right;
+    min-width: 80px;
+}
+
+#checkout-button {
+    width: 100%;
     padding: 10px;
-    border-top: 1px solid #ccc;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    border-radius: 5px;
 }
 
 .close-cart {
@@ -288,10 +359,61 @@ footer {
 }
 
 .payments-page {
-    background-image: url('/assets/images/background/payments_background.jpg');
+    background-image: url('/assets/images/background/login_background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
 }
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button.filter-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button.filter-btn.btn-outline-primary {
+    background-color: rgba(196, 193, 193, 0.575);
+    border-color: #ffcb42;
+    color: #000000;
+}
+
+button.filter-btn:hover {
+    background-color: #ffa500;
+    color: #fff;
+}
+
+button.filter-btn.btn-outline-primary:hover {
+    background-color: #ffcb42;
+    color: #fff;
+}
+
+button.filter-btn.active {
+    background-color: #ffa500;
+    color: #fff;
+    border-color: #ffa500;
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    button.filter-btn {
+        width: 100%;
+    }
+}
+
