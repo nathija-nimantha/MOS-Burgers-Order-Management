@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     paymentForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const customerId = Date.now();
+        const customerId = Date.now(); // Generate a unique ID for the customer
         const customerDetails = {
             id: customerId,
             firstName: document.getElementById('firstName').value,
@@ -50,7 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('cards', JSON.stringify(cards));
         }
 
+        if (cart.length > 0) {
+            const customerCarts = JSON.parse(localStorage.getItem('customerCarts')) || [];
+            customerCarts.push({
+                customerId: customerId,
+                cartItems: cart
+            });
+            localStorage.setItem('customerCarts', JSON.stringify(customerCarts));
+
+            localStorage.removeItem('cart');
+        }
+
         alert('Payment Successful!');
+        
+        window.location.href = "menu.html";
     });
 
     const cardNumberInput = document.getElementById('cardNumber');
@@ -128,4 +141,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-

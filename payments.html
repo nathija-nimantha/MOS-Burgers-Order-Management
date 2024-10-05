@@ -24,8 +24,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="orders.html">Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="customers.html">Customers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="reports.html">Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="customers.html">Profile</a></li>
+                    <a id="logoutButton" class="nav-link" href="login.html">Logout</a>
                 </ul>
             </div>
         </div>
@@ -33,47 +33,8 @@
 
     <main class="container my-5">
         <h1 class="text-center text-light mb-4" style="text-shadow: 0 0 10px black;">Payment Information</h1>
-
-        <form id="payment-form" class="bg-dark p-5 rounded text-light">
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" required>
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" required>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="street" class="form-label">Street Address</label>
-                    <input type="text" class="form-control" id="street" required>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="postalCode" class="form-label">Postal Code</label>
-                    <input type="text" class="form-control" id="postalCode" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required>
-                </div>
-            </div>
-
-            <h4 class="mt-4">Card Details</h4>
+        <div class="payment-information">
+            <h4 class="mt-4">Payment Details</h4>
 
             <div class="mb-3">
                 <label for="cardName" class="form-label">Full Name on Card</label>
@@ -83,7 +44,8 @@
             <div class="mb-3">
                 <label for="cardNumber" class="form-label">Card Number</label>
                 <div class="card-input">
-                    <input type="text" class="form-control" id="cardNumber" placeholder="Enter your card number" required>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Enter your card number"
+                        required>
                     <img id="card-icon" src="assets/images/cards/default.png" alt="Card Icon" class="card-icon" />
                 </div>
             </div>
@@ -101,7 +63,7 @@
 
             <div class="form-check mb-3">
                 <input type="checkbox" class="form-check-input" id="saveCardDetails">
-                <label for="saveCardDetails" class="form-check-label">Save payment details for next time</label>
+                <label for="saveCardDetails" class="form-check-label save-payment">Save payment details for next time</label>
             </div>
 
             <div class="mb-4">
@@ -109,8 +71,9 @@
                 <h5>Discount: <span id="discount">0.00</span> LKR</h5>
                 <h5>Total: <span id="total-price">0.00</span> LKR</h5>
             </div>
+        </div>
 
-            <button type="submit" class="btn btn-success w-100">Pay Now</button>
+        <button type="submit" class="btn btn-success w-100">Pay Now</button>
         </form>
     </main>
 

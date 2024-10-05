@@ -16,6 +16,14 @@ a {
     padding-right: 1.5rem;
 }
 
+#name{
+    padding-left: 12px;
+    padding-top: 8px;
+    color: white;
+    font-size: 1.1rem;
+    padding-right: 1.5rem;
+}
+
 .nav-link:hover {
     color: #ffc107 !important;
 }
@@ -83,7 +91,7 @@ a {
 }
 
 .features .col-lg-4:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    transform: scale(1.05);
 }
 
 .features .container {
@@ -102,8 +110,11 @@ a {
 }
 
 footer {
-    background-color: #343a40;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
 
 footer p {
     margin: 0;
@@ -206,7 +217,7 @@ footer p {
 
 .cart-icon {
     position: fixed;
-    bottom: 20px;
+    bottom: 90px;
     right: 20px;
     width: 60px;
     height: 60px;
@@ -237,7 +248,7 @@ footer p {
 
 .cart-window {
     position: fixed;
-    bottom: 100px;
+    bottom: 160px;
     right: 20px;
     width: 400px;
     background-color: #212529;
@@ -336,10 +347,17 @@ h5, h4 {
     color: #ffc107;
 }
 
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
+#login-message{
+    color: #000000;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold !important;
+    -webkit-text-stroke: #ffffff 0.5px;
+    background-color: rgba(255, 255, 255, 0.267);
+    border-radius: 10px;
+    width: 500px;
+    margin: auto;
 }
 
 .form-label {
@@ -417,3 +435,12 @@ button.filter-btn.active {
     }
 }
 
+.payment-information{
+    background-color: rgb(18, 33, 66);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.save-payment{
+    color: white;
+}

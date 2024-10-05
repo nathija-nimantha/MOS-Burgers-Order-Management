@@ -1,63 +1,50 @@
 const customerDetails = JSON.parse(localStorage.getItem('customers')) || [];
 const cardDetails = JSON.parse(localStorage.getItem('cards')) || [];
+const orders = JSON.parse(localStorage.getItem('orders')) || [];
+const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+const customerCarts = JSON.parse(localStorage.getItem('customerCarts')) || [];
 
-const loginSection = document.getElementById('login-section');
-const customerSection = document.getElementById('customer-section');
-const loginForm = document.getElementById('loginForm');
+let loggedInCustomer = JSON.parse(localStorage.getItem('currentCustomer'));
 
-let loggedInCustomer = null;
-
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    const customer = customerDetails.find(cust => cust.email === email && cust.password === password);
-
-    if (customer) {
-        loggedInCustomer = customer;
-        loginSection.classList.add('d-none');
-        customerSection.classList.remove('d-none');
-        displayCustomerDetails();
-        displayCardDetails();
-    } else {
-        alert('Invalid email or password.');
-    }
-});
+if (!loggedInCustomer) {
+    alert("No logged-in customer found.");
+} else {
+    displayCustomerDetails();
+    displayCardDetails();
+    displayBoughtItems();
+    displayCustomerCarts();
+}
 
 function displayCustomerDetails() {
-    if (loggedInCustomer) {
-        document.getElementById('firstName').textContent = loggedInCustomer.firstName;
-        document.getElementById('lastName').textContent = loggedInCustomer.lastName;
-        document.getElementById('email').textContent = loggedInCustomer.email;
-        document.getElementById('city').textContent = loggedInCustomer.city;
-        document.getElementById('street').textContent = loggedInCustomer.street;
-        document.getElementById('postalCode').textContent = loggedInCustomer.postalCode;
-    }
+    document.getElementById('firstName').textContent = loggedInCustomer.firstName;
+    document.getElementById('lastName').textContent = loggedInCustomer.lastName;
+    document.getElementById('email').textContent = loggedInCustomer.email;
+    document.getElementById('city').textContent = loggedInCustomer.city;
+    document.getElementById('street').textContent = loggedInCustomer.street;
+    document.getElementById('postalCode').textContent = loggedInCustomer.postalCode;
 }
 
 document.getElementById('editDetailsBtn').addEventListener('click', () => {
-    if (loggedInCustomer) {
-        const updatedFirstName = prompt("Edit First Name:", loggedInCustomer.firstName);
-        const updatedLastName = prompt("Edit Last Name:", loggedInCustomer.lastName);
-        const updatedCity = prompt("Edit City:", loggedInCustomer.city);
-        const updatedStreet = prompt("Edit Street:", loggedInCustomer.street);
-        const updatedPostalCode = prompt("Edit Postal Code:", loggedInCustomer.postalCode);
+    const updatedFirstName = prompt("Edit First Name:", loggedInCustomer.firstName);
+    const updatedLastName = prompt("Edit Last Name:", loggedInCustomer.lastName);
+    const updatedCity = prompt("Edit City:", loggedInCustomer.city);
+    const updatedStreet = prompt("Edit Street:", loggedInCustomer.street);
+    const updatedPostalCode = prompt("Edit Postal Code:", loggedInCustomer.postalCode);
 
-        if (updatedFirstName) loggedInCustomer.firstName = updatedFirstName;
-        if (updatedLastName) loggedInCustomer.lastName = updatedLastName;
-        if (updatedCity) loggedInCustomer.city = updatedCity;
-        if (updatedStreet) loggedInCustomer.street = updatedStreet;
-        if (updatedPostalCode) loggedInCustomer.postalCode = updatedPostalCode;
+    if (updatedFirstName) loggedInCustomer.firstName = updatedFirstName;
+    if (updatedLastName) loggedInCustomer.lastName = updatedLastName;
+    if (updatedCity) loggedInCustomer.city = updatedCity;
+    if (updatedStreet) loggedInCustomer.street = updatedStreet;
+    if (updatedPostalCode) loggedInCustomer.postalCode = updatedPostalCode;
 
-        const customerIndex = customerDetails.findIndex(cust => cust.id === loggedInCustomer.id);
-        if (customerIndex !== -1) {
-            customerDetails[customerIndex] = loggedInCustomer;
-            localStorage.setItem('customers', JSON.stringify(customerDetails));
-        }
-
-        displayCustomerDetails();
+    const customerIndex = customerDetails.findIndex(cust => cust.id === loggedInCustomer.id);
+    if (customerIndex !== -1) {
+        customerDetails[customerIndex] = loggedInCustomer;
+        localStorage.setItem('customers', JSON.stringify(customerDetails));
+        localStorage.setItem('currentCustomer', JSON.stringify(loggedInCustomer));
     }
+
+    displayCustomerDetails();
 });
 
 function displayCardDetails() {
@@ -117,19 +104,16 @@ document.getElementById('addCardDetailsBtn').addEventListener('click', () => {
     }
 });
 
-
-const orders = JSON.parse(localStorage.getItem('orders')) || [];
-const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-
 function displayBoughtItems() {
     const customerOrders = orders.filter(order => order.customerId === loggedInCustomer.id);
     const boughtItemsDiv = document.getElementById('bought-items');
-    
+    boughtItemsDiv.innerHTML = '';
+
     if (customerOrders.length === 0) {
         boughtItemsDiv.innerHTML = "<p>You haven't purchased anything yet.</p>";
         return;
     }
-    
+
     customerOrders.forEach(order => {
         const itemDiv = document.createElement('div');
         itemDiv.innerHTML = `
@@ -138,12 +122,23 @@ function displayBoughtItems() {
         `;
         boughtItemsDiv.appendChild(itemDiv);
     });
+}
 
+function displayCustomerCarts() {
     const itemSelect = document.getElementById('itemSelect');
-    customerOrders.forEach(order => {
+    itemSelect.innerHTML = '';
+
+    if (customerCarts.length === 0) {
         const option = document.createElement('option');
-        option.value = order.itemId;
-        option.textContent = order.itemName;
+        option.textContent = 'No items in the cart';
+        itemSelect.appendChild(option);
+        return;
+    }
+
+    customerCarts.forEach(cartItem => {
+        const option = document.createElement('option');
+        option.value = cartItem.itemId;
+        option.textContent = cartItem.itemName;
         itemSelect.appendChild(option);
     });
 }
@@ -168,4 +163,10 @@ function handleReviewSubmission(e) {
 }
 
 document.getElementById('reviewForm').addEventListener('submit', handleReviewSubmission);
-displayBoughtItems();
+
+document.getElementById('logoutButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    localStorage.removeItem('currentCustomer');
+    window.location.href = 'login.html';
+    console.log("Current Customer: ", localStorage.getItem('currentCustomer'), "is Deleted");
+});
