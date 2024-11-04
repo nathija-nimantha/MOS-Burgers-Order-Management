@@ -99,12 +99,6 @@ mos-burgers/
 
 ---
 
-### Screenshots
-
-Include screenshots here to show the layout of the app, login screen, menu items, cart view, and checkout process.
-
----
-
 ### Technologies
 
 - **HTML5**
